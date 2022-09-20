@@ -170,10 +170,10 @@ do_backup () {
 
         if [ -n "${opt_log}" ]; then
             rsync -aEvx --del --stats --log-file ${LOG}  /boot/ ${MOUNTDIR}/boot/
-            rsync -aEvx --del --stats --log-file ${LOG} --exclude={'tmp/**','proc/**','run/**','sys/**','mnt/**','var/swap','home/pi/.cache/**','home/pi/RetroPie/**','home/owncloud-data/**','home/pi/SDBackups/**','mtn/PiBackup.img/**'} / ${MOUNTDIR}/
+            rsync -aEvx --del --stats --log-file ${LOG} --exclude-from=/home/pi/Software/bkup_rpimage/exclude.txt / ${MOUNTDIR}/
         else
             rsync -aEvx --del --stats /boot/ ${MOUNTDIR}/boot/
-            rsync -aEvx --del --stats --exclude={'tmp/**','proc/**','run/**','sys/**','mnt/**','var/swap','home/pi/.cache/**','home/pi/RetroPie/**','home/owncloud-data/**','home/pi/SDBackups/**','mtn/PiBackup.img/**'} / ${MOUNTDIR}/
+            rsync -aEvx --del --stats --exclude-from=/home/pi/Software/bkup_rpimage/exclude.txt / ${MOUNTDIR}/
         fi
 
 		trace "Restarting services..."
