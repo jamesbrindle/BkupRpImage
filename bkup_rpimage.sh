@@ -193,8 +193,6 @@ do_backup () {
 		trace "Starting cron"
 		service cron start	
 
-		trace "Operation complete"
-
     else
         trace "Skipping rsync since ${MOUNTDIR} is not a mount point"
     fi
@@ -226,10 +224,10 @@ do_umount () {
 
 # Compresses ${IMAGE} to ${IMAGE}.gz using a temp file during compression
 do_compress () {
-    trace "Compressing ${IMAGE} to ${IMAGE}.gz"
+    trace "Compressing ${IMAGE} to ${IMAGE}-$(date +%d-%m-%Y).gz"
     pv -tpreb "${IMAGE}" | gzip > "${IMAGE}.gz.tmp"
     if [ -s "${IMAGE}.gz.tmp" ]; then
-        mv -f "${IMAGE}.gz.tmp" "${IMAGE}.gz"
+        mv -f "${IMAGE}.gz.tmp" "${IMAGE}-$(date +%d-%m-%Y).gz"
         if [ -n "${opt_delete}" ]; then
             rm -f "${IMAGE}"
         fi
