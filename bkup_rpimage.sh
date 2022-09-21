@@ -153,6 +153,9 @@ do_backup () {
 		trace "Stopping apache2"
 		service apache2 stop
 
+		trace "Stopping nginx"
+		service apache2 stop
+
 		trace "Stopping homeassistant"
 		docker stop homeassistant
 
@@ -179,6 +182,9 @@ do_backup () {
 		trace "Restarting services..."
 
 		trace "Starting apache2"
+		service apache2 start
+
+		race "Starting nginx"
 		service apache2 start
 
 		trace "Starting homeassistant"
