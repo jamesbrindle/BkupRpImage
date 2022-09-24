@@ -8,6 +8,7 @@
 /home/pi/RetroPie/*
 /home/owncloud-data/*
 /home/pi/SDBackups/*
+/home/pi/PCBackups/*
 /mnt/PiBackup.img/*
 
 .Trashes

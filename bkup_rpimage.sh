@@ -33,7 +33,7 @@
 #                    recent raspian versions.
 #
 #
-#
+# Command to run: sudo sh /home/pi/Software/bkup_rpimage/bkup_rpimage.sh start -cz -f /home/pi/SDBackups/PiBackup.img
 
 VERSION=v1.2
 SDCARD=/dev/mmcblk0
@@ -179,6 +179,9 @@ do_backup () {
             rsync -aEvx --del --stats --exclude-from=/home/pi/Software/bkup_rpimage/exclude.txt / ${MOUNTDIR}/
         fi
 
+		trace "Setting permissions on backup folder"
+		chmod 777 -R /home/pi/SDBackups
+
 		trace "Restarting services..."
 
 		trace "Starting apache2"
@@ -234,6 +237,7 @@ do_compress () {
     pv -tpreb "${IMAGE}" | gzip > "${IMAGE}.gz.tmp"
     if [ -s "${IMAGE}.gz.tmp" ]; then
         mv -f "${IMAGE}.gz.tmp" "${IMAGE}-$(date +%d-%m-%Y).gz"
+		chmod 777 -R /home/pi/SDBackups
         if [ -n "${opt_delete}" ]; then
             rm -f "${IMAGE}"
         fi
