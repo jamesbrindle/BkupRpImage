@@ -154,7 +154,7 @@ do_backup () {
 		service apache2 stop
 
 		trace "Stopping nginx"
-		service apache2 stop
+		service nginx stop
 
 		trace "Stopping homeassistant"
 		docker stop homeassistant
@@ -188,7 +188,7 @@ do_backup () {
 		service apache2 start
 
 		race "Starting nginx"
-		service apache2 start
+		service nginx start
 
 		trace "Starting homeassistant"
 		docker start homeassistant
