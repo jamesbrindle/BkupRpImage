@@ -187,7 +187,7 @@ do_backup () {
 		trace "Starting apache2"
 		service apache2 start
 
-		race "Starting nginx"
+		trace "Starting nginx"
 		service nginx start
 
 		trace "Starting homeassistant"
