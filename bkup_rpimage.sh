@@ -81,6 +81,9 @@ error () {
     exit 1
 }
 
+echo "Removing existing mount point if exists"
+rm -R /mnt/PiBackup.img
+
 # Creates a sparse "${IMAGE}" clone of ${SDCARD} and attaches to ${LOOPBACK}
 do_create () {
     trace "Creating sparse "${IMAGE}", the apparent size of $SDCARD"

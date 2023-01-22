@@ -5,6 +5,7 @@
 /tmp/*
 /run/*
 /mnt/*
+/root/.cache
 /home/pi/RetroPie/*
 /home/owncloud-data/*
 /home/pi/SDBackups/*
