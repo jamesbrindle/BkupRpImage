@@ -11,8 +11,10 @@
 /home/pi/SDBackups/*
 /home/pi/PCBackups/*
 /mnt/PiBackup.img/*
-
+/usr/share/hassio/backup/*
+.cache
 .Trashes
+.Trash
 ._.Trashes
 .fseventsd
 .DS_Store
