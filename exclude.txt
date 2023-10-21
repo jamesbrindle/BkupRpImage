@@ -12,6 +12,7 @@
 /home/pi/PCBackups/*
 /mnt/PiBackup.img/*
 /usr/share/hassio/backup/*
+/Docker/homeassistant/Backups/*
 .cache
 .Trashes
 .Trash
